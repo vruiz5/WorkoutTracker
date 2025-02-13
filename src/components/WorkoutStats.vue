@@ -1,12 +1,12 @@
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps } from 'vue'
 
 const props = defineProps({
   totalTime: Number,
   totalCalories: Number,
   mostCalories: Number,
   leastCalories: Number,
-});
+})
 </script>
 
 <template>
