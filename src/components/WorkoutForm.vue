@@ -1,34 +1,34 @@
 <script setup>
-import { ref, defineEmits, defineProps, watch } from 'vue';
+import { ref, defineEmits, defineProps, watch } from 'vue'
 
 const props = defineProps({
   editableWorkout: Object
-});
+})
 
-const exercise = ref('');
-const duration = ref('');
-const calories = ref('');
-const heartRate = ref('');
-const reps = ref('');
-const sets = ref('');
-const isEditing = ref(false);
+const exercise = ref('')
+const duration = ref('')
+const calories = ref('')
+const heartRate = ref('')
+const reps = ref('')
+const sets = ref('')
+const isEditing = ref(false)
 
-const emit = defineEmits(['workoutSubmitted']);
+const emit = defineEmits(['workoutSubmitted'])
 
 watch(() => props.editableWorkout, (newWorkout) => {
   if (newWorkout) {
-    exercise.value = newWorkout.exercise;
-    duration.value = newWorkout.duration;
-    calories.value = newWorkout.calories;
-    heartRate.value = newWorkout.heartRate;
-    reps.value = newWorkout.reps;
-    sets.value = newWorkout.sets;
-    isEditing.value = true;
+    exercise.value = newWorkout.exercise
+    duration.value = newWorkout.duration
+    calories.value = newWorkout.calories
+    heartRate.value = newWorkout.heartRate
+    reps.value = newWorkout.reps
+    sets.value = newWorkout.sets
+    isEditing.value = true
   }
-}, { deep: true });
+}, { deep: true })
 
 const onSubmit = () => {
-  if (!exercise.value || !duration.value || !calories.value || !heartRate.value) return;
+  if (!exercise.value || !duration.value || !calories.value || !heartRate.value) return
 
   const workoutData = {
     id: isEditing.value ? props.editableWorkout.id : Date.now(),
@@ -38,21 +38,21 @@ const onSubmit = () => {
     heartRate: parseInt(heartRate.value),
     reps: parseInt(reps.value) || 0,
     sets: parseInt(sets.value) || 0,
-  };
+  }
 
-  emit('workoutSubmitted', workoutData);
-  resetForm();
-};
+  emit('workoutSubmitted', workoutData)
+  resetForm()
+}
 
 const resetForm = () => {
-  exercise.value = '';
-  duration.value = '';
-  calories.value = '';
-  heartRate.value = '';
-  reps.value = '';
-  sets.value = '';
-  isEditing.value = false;
-};
+  exercise.value = ''
+  duration.value = ''
+  calories.value = ''
+  heartRate.value = ''
+  reps.value = ''
+  sets.value = ''
+  isEditing.value = false
+}
 </script>
 
 <template>

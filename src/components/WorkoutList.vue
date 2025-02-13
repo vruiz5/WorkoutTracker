@@ -1,11 +1,11 @@
 <script setup>
-import { defineProps, defineEmits } from 'vue';
+import { defineProps, defineEmits } from 'vue'
 
 const props = defineProps({
   workouts: Array,
-});
+})
 
-const emit = defineEmits(['deleteWorkout', 'editWorkout']);
+const emit = defineEmits(['deleteWorkout', 'editWorkout'])
 </script>
 
 <template>
